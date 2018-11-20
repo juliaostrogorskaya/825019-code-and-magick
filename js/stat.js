@@ -7,6 +7,14 @@ var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
 var BAR_GAP = 50;
 var TEXT_Y = 260;
+var BAR_COLOR = getBarColor();
+
+function getBarColor() {
+  var hue = 240;
+  var lightness = 50 + '%';
+  var saturation = Math.floor(Math.random()*100) + '%';
+  return 'hsl' + "(" + hue + ',' + saturation +',' + lightness + ")";
+}
 
 var renderCloud = function(ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -45,7 +53,7 @@ window.renderStatistics = function(ctx, names, times) {
     if(names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = '#4157fe';
+      ctx.fillStyle = BAR_COLOR;
     }
     ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP)* i, 50, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
   }
