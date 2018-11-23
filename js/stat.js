@@ -14,8 +14,12 @@ var TEXT_X = 125;
 var TEXT_Y = 40;
 var TEXT_LINE_HEIGHT = 20;
 
-function getBarColor(min, max) {
+function getRandomValue(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function getBarColor() {
+  return 'rgba(0, 0, 255, ' + getRandomValue(0.1, 0.9) + ')'
 }
 
 var renderCloud = function(ctx, x, y, color) {
@@ -46,7 +50,7 @@ window.renderStatistics = function(ctx, names, times) {
     if(names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'rgba(0, 0, 255, ' + getBarColor(0.1, 0.9) + ')';
+      ctx.fillStyle = getBarColor();
     }
     ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP)* i, BAR_Y, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
   }
