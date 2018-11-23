@@ -13,13 +13,9 @@ var NAMES_Y = 260;
 var TEXT_X = 125;
 var TEXT_Y = 40;
 var TEXT_LINE_HEIGHT = 20;
-var BAR_COLOR = getBarColor();
 
-function getBarColor() {
-  var hue = 240;
-  var lightness = 50 + '%';
-  var saturation = Math.floor(Math.random()*100) + '%';
-  return 'hsl' + "(" + hue + ',' + saturation +',' + lightness + ")";
+function getBarColor(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 var renderCloud = function(ctx, x, y, color) {
@@ -50,7 +46,7 @@ window.renderStatistics = function(ctx, names, times) {
     if(names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = BAR_COLOR;
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + getBarColor(0.1, 0.9) + ')';
     }
     ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP)* i, BAR_Y, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
   }
