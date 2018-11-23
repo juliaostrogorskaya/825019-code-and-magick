@@ -11,6 +11,8 @@ var BAR_GAP = 50;
 var BAR_Y = 230;
 var NAMES_Y = 260;
 var TEXT_X = 125;
+var TEXT_Y = 40;
+var TEXT_LINE_HEIGHT = 20;
 var BAR_COLOR = getBarColor();
 
 function getBarColor() {
@@ -42,11 +44,6 @@ window.renderStatistics = function(ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
-    /* MAX_BAR      BAR[I]
-     ----------- = --------
-      BAR_HEIGHT       X
-
-      X = (BAR_HEIGHT * BAR[I]) / MAX_BAR */
     ctx.fillStyle = "#000";
     ctx.font = '16px PT Mono';
     ctx.fillText(names[i], CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, NAMES_Y);
@@ -59,9 +56,6 @@ window.renderStatistics = function(ctx, names, times) {
   }
 
   ctx.fillStyle = "#000";
-  ctx.fillText('Ура вы победили!', TEXT_X, 40);
-  ctx. fillText('Список результатов:', TEXT_X, 60);
-
-  getGameResults(ctx, names, times);
-
+  ctx.fillText('Ура вы победили!', TEXT_X, TEXT_Y);
+  ctx. fillText('Список результатов:', TEXT_X, TEXT_Y + TEXT_LINE_HEIGHT);
 };
