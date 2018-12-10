@@ -5,6 +5,7 @@ var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'К
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 /* var showSetup = function () {
   var userDialog = document.querySelector('.setup');
@@ -67,6 +68,7 @@ drawWizards();
 
 document.querySelector('.setup-similar').classList.remove('hidden');
 
+// следующее задание
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var setupOpen = document.querySelector('.setup-open');
@@ -75,6 +77,9 @@ var setupClose = setup.querySelector('.setup-close');
 var setupUserName = setup.querySelector('.setup-user-name');
 var setupButtonSave = setup.querySelector('.setup-submit');
 var setupForm = document.querySelector('.setup-wizard-form');
+var wizardCoat = document.querySelector('.wizard-coat');
+var wizardEyes = document.querySelector('.wizard-eyes');
+var wizardFireball = document.querySelector('.setup-fireball-wrap');
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE && !setupUserName.focus) {
@@ -117,4 +122,16 @@ setupButtonSave.addEventListener('keydown', function (evt) {
     evt.preventDefault();
     setupForm.submit();
   }
+});
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = WIZARD_COATS[getRandomValue(WIZARD_COATS)];
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = WIZARD_EYES[getRandomValue(WIZARD_EYES)];
+});
+
+wizardFireball.addEventListener('click', function () {
+  wizardFireball.style.backgroundColor = WIZARD_FIREBALL[getRandomValue(WIZARD_FIREBALL)];
 });
