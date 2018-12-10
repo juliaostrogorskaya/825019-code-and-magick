@@ -80,9 +80,10 @@ var setupForm = document.querySelector('.setup-wizard-form');
 var wizardCoat = document.querySelector('.wizard-coat');
 var wizardEyes = document.querySelector('.wizard-eyes');
 var wizardFireball = document.querySelector('.setup-fireball-wrap');
+var inputs = setup.getElementsByTagName('input');
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && !setupUserName.focus) {
+  if (evt.keyCode === ESC_KEYCODE && !setupUserName.focus) { // после снятия фокуса не закрывается по esc
     closePopup();
   }
 };
@@ -126,12 +127,15 @@ setupButtonSave.addEventListener('keydown', function (evt) {
 
 wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = WIZARD_COATS[getRandomValue(WIZARD_COATS)];
+  inputs[2].value = wizardCoat.style.fill;
 });
 
 wizardEyes.addEventListener('click', function () {
   wizardEyes.style.fill = WIZARD_EYES[getRandomValue(WIZARD_EYES)];
+  inputs[3].value = wizardEyes.style.fill;
 });
 
 wizardFireball.addEventListener('click', function () {
-  wizardFireball.style.backgroundColor = WIZARD_FIREBALL[getRandomValue(WIZARD_FIREBALL)];
+  wizardFireball.style.background = WIZARD_FIREBALL[getRandomValue(WIZARD_FIREBALL)];
+  // inputs[4].value = wizardFireball.style.backgroundColor; // почему-то переводит в rgb и форма не отправляется
 });
